@@ -1,6 +1,7 @@
 package github.com.zy666
 
 import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -23,6 +24,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 intent.addCategory("myDefineAction")
                 startActivity(intent)
             }
+            R.id.btn_webview -> {
+                var intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse("https://www.baidu.com")
+                startActivity(intent)
+            }
         }
     }
 
@@ -43,10 +49,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.refresh_item -> Toast.makeText(this, item.title, Toast.LENGTH_LONG).show()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
     }
 
     private fun changeBtnText(text: String, desc: String) {

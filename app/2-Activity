@@ -150,6 +150,7 @@ Intent有多个构造函数的重载，其中一个是Intent(Context packageCont
     - 而<category>标签包含了一些附加信息，更精确的指名了当前的活动能够响应的Intent中还可能带有的category
     
     - 只有action和category标签中的内容同时能够匹配上Intent中指定的action和category，这个活动才能响应该Intent。
+    
     系统默认的category,即**android.intent.category.DEFAULT**
     在使用Intent的时候可以不写，
     在调用startActivity()方法的时候会自动将这个category添加到Intent中去。例如
@@ -179,15 +180,16 @@ Intent有多个构造函数的重载，其中一个是Intent(Context packageCont
       ```
 
 
-  使用
+   - 使用
 
-```
-Intent intent = new Intent();
-intent.setAction("second");
-intent.addCategory("")
-startActivity(intent);
-
-```
+    ```
+    
+    Intent intent = new Intent();
+    intent.setAction("second");
+    intent.addCategory("")
+    startActivity(intent);
+    
+    ```
 
 
 
