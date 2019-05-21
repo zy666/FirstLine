@@ -1,0 +1,193 @@
+## 1 概念
+
+一种可以包含用户界面的组件，主要用于和用户交互
+
+## 2 基本用法
+
+**创建的Activity需要在AndroidManifest.xml文件中注册**
+
+### 1.1 在Activity中使用menu
+
+1. res目录下新建menu文件夹
+
+2. <item>标签用来创建具体某一个菜单，
+
+   通过 android：id给菜单指定唯一标识符，
+
+   通过 android：title给这个菜单项指定一个名称
+
+   ```
+   java
+   <?xml version="1.0" encoding="utf-8"?>
+   <menu xmlns:android="http://schemas.android.com/apk/res/android">
+       <item
+           android:id="@+id/add_item"
+           android:title="添加" />
+       <item
+           android:id="@+id/refresh_item"
+           android:title="刷新" />
+   </menu>
+
+   ```
+
+
+
+3. Activity中重写onCreateOptionMenu()
+
+   ```
+   java
+   
+   public boolean onCreateOptionMenu(Menu menu){
+       getMenuInflater().inflate(R.menu.main_main,menu)
+       return true;
+   }
+   
+   kotlin
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+           menuInflater.inflate(R.menu.menu_main, menu)
+           return true
+    }
+
+   ```
+
+   inflate()方法接受两个参数，
+
+   一个是 R.menu.main_main对应的资源文件，
+
+   第二个参数用于指定我们的菜单项将添加到哪一个Menu对象中去。这里直接使用当前方法的menu。
+
+   然后给这个方法返回true。表示允许菜单创建出来，如果返回了false，创建的菜单将无法创建
+
+4. 定义响应菜单事件
+
+   onOptionsitemSelected()
+
+   ```
+    java
+    public boolean onOptionsitemSelected(Menuitem item) {
+    switch (item.getItemId ()) {
+        case R.id.add_item:
+            Toast.makeText(this, "You clicked Add", Toast.LENGTH_SHORT).show();
+            break;
+    }
+    return true;
+    }
+   
+    kotlin
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+       when (item?.itemId) {
+           R.id.add_item -> Toast.makeText(this, item.title, Toast.LENGTH_LONG).show()
+           R.id.refresh_item -> Toast.makeText(this, item.title, Toast.LENGTH_LONG).show()
+       }
+       return super.onOptionsItemSelected(item)
+    }
+   
+   ```
+
+
+
+#### 1.2 销毁一个活动
+
+- 按下Back按键销毁当前活动。
+- Activity提供finish()方法，在活动中调用这个方法也可以销毁当前活动
+
+## 3 使用Intent在活动间穿梭
+
+Intent使Android程序中各组件进行交互的重要方式。
+
+- **指名当前组件想要执行的动作**
+- **不同组件间传递数据**
+
+### 1.1 分类
+
+- 显示Intent
+- 隐式Intent
+
+Intent有多个构造函数的重载，其中一个是Intent(Context packageContext,Class<?> class)
+
+- 第一个参数context要求提供启动活动的上下文
+- 第二个参数class指定要启动的目标活动
+
+**通过这个函数就可以构建出Intent的“意图”**
+
+1. 启动显示Intent
+
+   - 先在AndroidManifest.xml中注册两个活动，FirstActivity和TwoActivity。
+
+     ![](http://ww1.sinaimg.cn/large/8f0b8983ly1g10z593h33j21be0csgrl.jpg)
+
+   - 然后采用以下方式启动
+
+   Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+   startActivity(intent);
+
+2. 使用隐式Intent
+
+   **使用场景**
+
+   不明确指出我们想要启动哪一个活动，指定一些列抽象的action和category等信息，交给系统分析Intent，帮我们找出合适的活动去启动。
+
+   **简单来说，就是可以响应我们这个隐式Intent的活动。**
+
+   - 通过 <activity>标签下配置<intent-filter>的内容，可以指定当前活动能够相应的action和category打开AndroidMainifest.xml，添加如下代码:
+
+    ```
+   <activity android:name=".TwoActivity">
+   
+        <intent-filter>
+            <action android:name="TwoActivity" />
+    
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="myDefineAction" />
+        </intent-filter>
+
+   </activity>
+    
+    ```
+
+    - 在<action>标签中指名了当前活动可以响应com.example.activityTest.ACTION_START这个action
+    
+    - 而<category>标签包含了一些附加信息，更精确的指名了当前的活动能够响应的Intent中还可能带有的category
+    
+    - 只有action和category标签中的内容同时能够匹配上Intent中指定的action和category，这个活动才能响应该Intent。
+    系统默认的category,即**android.intent.category.DEFAULT**
+    在使用Intent的时候可以不写，
+    在调用startActivity()方法的时候会自动将这个category添加到Intent中去。例如
+    
+      ```
+       Intent intent = new Intent("second");
+       或者
+        Intent intent = new Intent();
+        intent.setAction("second");
+        startActivity(intent);
+        
+      ```
+    
+    
+    
+   - 每个Intent只指定一个action，但却能指定多个category。
+
+      ```
+      <activity android:name = "SecondActivity">
+        <intent-filter>
+            <action android:name = "second/>
+            <category android:name = "android.intent.category.DEFAULT"/>
+            <category android:name = "android.intent.category.second"/>
+        </intent-filter>
+      </activity>
+      
+      ```
+
+
+  使用
+
+```
+Intent intent = new Intent();
+intent.setAction("second");
+intent.addCategory("")
+startActivity(intent);
+
+```
+
+
+
