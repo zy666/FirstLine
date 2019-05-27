@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".second.SecondPartActivity">
+
+
+        <Button
+            android:id="@+id/btn_begin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:text="开启kotlin"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:text="firstActivity"
+            android:textColor="@color/colorPrimary" />
+
+
+        <Button
+            android:id="@+id/btn_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:text="twoActivity"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:text="finish"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_webview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:text="网页浏览器"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:text="拨打电话"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_pass_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:text="intent传递数据"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_life"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:text="生命周期"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/standard_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:text="standard"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/single_top_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorTheme"
+            android:onClick="onClick"
+            android:text="singleTop"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

@@ -1,4 +1,4 @@
-package github.com.zy666
+package github.com.zy666.second
 
 import android.app.Activity
 import android.content.Context
@@ -6,6 +6,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
+import github.com.zy666.R
 import kotlinx.android.synthetic.main.activity_intent.*
 
 class IntentActivity : AppCompatActivity() {

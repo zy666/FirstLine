@@ -1,10 +1,8 @@
-package github.com.zy666
+package github.com.zy666.second
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import github.com.zy666.R
 import kotlinx.android.synthetic.main.activity_third.*
 
 class ThirdActivity : AppCompatActivity() {

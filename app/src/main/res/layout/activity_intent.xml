@@ -7,7 +7,7 @@
     android:background="@color/colorTheme"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".IntentActivity">
+    tools:context=".second.IntentActivity">
 
     <TextView
         android:id="@+id/tv_title"
